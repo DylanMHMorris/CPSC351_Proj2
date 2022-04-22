@@ -30,3 +30,26 @@ int main(){
 
     return 0;
 }
+
+// We have to use sort() function so I include the sort() function here
+/*
+#include <iostream>
+#include <algorithm> 
+#include <vector>
+#include <execution>
+
+using namespace std;
+
+int main()
+{
+    std::vector<int> Vec{5,3,6,2,7,4,1,8,2,9};
+    std::sort(std::execution::par, Vec.begin(),Vec.end());
+    for(auto elm:Vec)
+    {
+        cout << elm << “ ”; 
+    }
+    return 0;
+
+}
+
+*/
