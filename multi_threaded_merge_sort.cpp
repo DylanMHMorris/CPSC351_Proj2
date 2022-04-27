@@ -1,12 +1,9 @@
 #include <list>
 #include <iostream>
-<<<<<<< Updated upstream
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-=======
 #include <vector>
->>>>>>> Stashed changes
 
 using namespace std;
 
@@ -14,14 +11,13 @@ int cmpfunc (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
 }
 
-int j = 0;
 
-void *thread_func(void *arg){
+void *thread_func(void *arg, void *arg2){
 
-    
-    j++;
+    int v;
+    v++;
    
-    printf("j is %d\n", j);
+    printf("v is %d\n", v);
 
     pthread_exit(0);
 
@@ -50,6 +46,23 @@ int main(){
     cout << "generated numbers:" << endl;
     for (auto v : arr){
         cout << v << endl;
+    }    
+
+    //somehow determine boundaries for each segment to pass based on n/p and replace NULL with each corresponding front and rear
+    int elements_each = n/p;//number of elements in each segment
+    int iterator1 = 0;
+    int iterator2 = elements_each;
+    pthread_t p1, p2;
+    int counter2 = 0;
+    while(counter2 < p){
+        pthread_create(&p1, NULL, thread_func, arr[iterator1:iterator2]/*what it should be*/);
+        iterator1 += elements_each; 
+        iterator2 += elements_each; //possibly -1 to avoid out of bounds error
+        pthread_create(&p2, NULL, thread_func, arr[iterator1:iterator2]);
+        iterator1 += elements_each;
+        iterator2 += elements_each;
+        // 0,1,2,3,4 ||5,6,7,8,9 || 10 11 12 13 14
+        counter2++; 
     }
 
     return 0;
@@ -105,13 +118,19 @@ void *thread_func(void *arg){
 
 int main(int argc, char *argv[]){
 
-      pthread_t p1, p2;             // Need to add 2 more segment p3, p4
+      pthread_t p1, p2, p3, p4;             // Need to add 2 more segment p3, p4
 
       pthread_create(&p1, NULL, thread_func, NULL);
       pthread_create(&p2, NULL, thread_func, NULL);
+      pthread_create(&p3, NULL, thread_func, NULL);
+      pthread_create(&p4, NULL, thread_func, NULL);
+
 
       pthread_join(p1, NULL);
       pthread_join(p2, NULL);
+      pthread_join(p3, NULL);
+      pthread_join(p4, NULL);
+
 
 
 }
