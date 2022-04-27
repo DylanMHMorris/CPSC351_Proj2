@@ -92,3 +92,37 @@ int main(int argc, char *argv[]){
 
 }
 */
+
+/*
+// C++ program to generate the vector
+// with random values
+#include <bits/stdc++.h>
+using namespace std;
+  
+// Driver Code
+int main()
+{
+    // Size of vector
+    int size = 5;
+  
+    // Initialize the vector with
+    // initial values as 0
+    vector<int> V(size, 0);
+  
+    // use srand() for different outputs
+    srand(time(0));
+  
+    // Generate value using generate
+    // function
+    generate(V.begin(), V.end(), rand);
+  
+    cout << "The elements of vector are:\n";
+  
+    // Print the values in the vector
+    for (int i = 0; i < size; i++) {
+        cout << V[i] << " ";
+    }
+  
+    return 0;
+}
+*/
