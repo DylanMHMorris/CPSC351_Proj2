@@ -1,7 +1,27 @@
 #include <list>
 #include <iostream>
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 using namespace std;
+
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
+
+int j = 0;
+
+void *thread_func(void *arg){
+
+    
+    j++;
+   
+    printf("j is %d\n", j);
+
+    pthread_exit(0);
+
+}
 
 int main(){
     /* n is the amount of numbers that will be sorted
