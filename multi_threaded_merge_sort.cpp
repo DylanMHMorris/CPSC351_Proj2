@@ -31,25 +31,31 @@ int main(){
     return 0;
 }
 
-// We have to use sort() function so I include the sort() function here
-/*
-#include <iostream>
-#include <algorithm> 
-#include <vector>
-#include <execution>
+/* qsort() example
+#include <stdio.h>
+#include <stdlib.h>
 
-using namespace std;
+int values[] = { 88, 56, 100, 2, 25 };
 
-int main()
-{
-    std::vector<int> Vec{5,3,6,2,7,4,1,8,2,9};
-    std::sort(std::execution::par, Vec.begin(),Vec.end());
-    for(auto elm:Vec)
-    {
-        cout << elm << “ ”; 
-    }
-    return 0;
-
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
 }
 
+int main () {
+   int n;
+
+   printf("Before sorting the list is: \n");
+   for( n = 0 ; n < 5; n++ ) {
+      printf("%d ", values[n]);
+   }
+
+   qsort(values, 5, sizeof(int), cmpfunc);
+
+   printf("\nAfter sorting the list is: \n");
+   for( n = 0 ; n < 5; n++ ) {   
+      printf("%d ", values[n]);
+   }
+  
+   return(0);
+}
 */
