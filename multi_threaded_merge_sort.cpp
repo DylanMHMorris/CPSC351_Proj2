@@ -1,8 +1,12 @@
 #include <list>
 #include <iostream>
+<<<<<<< Updated upstream
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+=======
+#include <vector>
+>>>>>>> Stashed changes
 
 using namespace std;
 
@@ -36,15 +40,15 @@ int main(){
     /*generate random numbers determined by N and U */
     int counter = 0;
     int random;
-    list<int> ini_list = {};
+    vector<int> arr;
     while(counter < n){
         random = rand() % u;
-        ini_list.push_back(random);
+        arr.push_back(random);
         counter++;
     }
 
     cout << "generated numbers:" << endl;
-    for (auto v : ini_list){
+    for (auto v : arr){
         cout << v << endl;
     }
 
