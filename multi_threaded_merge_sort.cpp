@@ -52,7 +52,7 @@ int main(){
     int elements_each = n/p;//number of elements in each segment change to floor
     int iterator1 = 0;
     int iterator2 = elements_each;
-    pthread_t p1, p2;
+    pthread_t p1;
     int counter2 = 0;
     while(counter2 < p){//concurrent
         pthread_create(&p1, NULL, thread_func, arr[iterator1:iterator2]/*what it should be*/);
