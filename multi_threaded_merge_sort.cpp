@@ -45,7 +45,7 @@ int main(){
 
     cout << "generated numbers:" << endl;
     for (auto v : arr){
-        cout << v << endl;
+        cout << v << " ";
     }    
 
     //somehow determine boundaries for each segment to pass based on n/p and replace NULL with each corresponding front and rear
