@@ -32,6 +32,7 @@ int main(){
     p is the number of segments that the numbers will be divided into */
     //when inputting put a space inbetween numbers EX: 5 25 5
     int n, u, p;
+    cout << "Please input 3 numbers: ";
     cin >> n >> u >> p;
     cout << "inputs were:" << endl;
     cout << n << endl << u << endl << p << endl;
