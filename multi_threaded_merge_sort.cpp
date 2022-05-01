@@ -7,12 +7,13 @@
 
 using namespace std;
 
-int cmpfunc (const void * a, const void * b) {
-   return ( *(int*)a - *(int*)b );
-}
+struct info {
+    int upper;
+    int lower;
+    vector<int> arr;
+};
 
-
-void *thread_func(void *arg, void *arg2){
+void *thread_func(void *arg){
 
     int v;
     v++;
@@ -36,32 +37,37 @@ int main(){
     /*generate random numbers determined by N and U */
     int counter = 0;
     int random;
-    vector<int> arr;
+    vector<int> holder;
     while(counter < n){
         random = rand() % u;
-        arr.push_back(random);
+        holder.push_back(random);
         counter++;
     }
 
+    struct info V;
+    V.upper = n/p;
+    V.lower = 0;
+    V.arr = holder;
+
     cout << "generated numbers:" << endl;
-    for (auto v : arr){
+    for (auto v : V.arr){
         cout << v << " ";
     }    
 
     //somehow determine boundaries for each segment to pass based on n/p and replace NULL with each corresponding front and rear
-    int elements_each = n/p;//number of elements in each segment change to floor
-    int iterator1 = 0;
-    int iterator2 = elements_each;
-    pthread_t p1;
-    int counter2 = 0;
-    while(counter2 < p){//concurrent
-        pthread_create(&p1, NULL, thread_func, arr[iterator1:iterator2]/*what it should be*/);
-        iterator1 += elements_each; 
-        iterator2 += elements_each; //possibly -1 to avoid out of bounds error
+//    int elements_each = n/p;//number of elements in each segment change to floor
+ //   int iterator1 = 0;
+ //   int iterator2 = elements_each;
+ //   pthread_t p1;
+ //   int counter2 = 0;
+ //   while(counter2 < p){//concurrent
+ //       pthread_create(&p1, NULL, thread_func, arr[iterator1:iterator2]/*what it should be*/);
+ //       iterator1 += elements_each; 
+  //      iterator2 += elements_each; //possibly -1 to avoid out of bounds error
         //pthread_create(&p2, NULL, thread_func, arr[iterator1:iterator2]);
         // 0,1,2,3,4 ||5,6,7,8,9 || 10 11 12 13 14
-        counter2++; 
-    }
+  //      counter2++; 
+ //   }
     //while loop with join
     //while loop to merge
 
