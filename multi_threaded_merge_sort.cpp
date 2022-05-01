@@ -13,21 +13,24 @@ struct info {
     vector<int> arr;
 };
 
-void *thread_func(void *arg){
+void *sort_func(void *arg){ // needs to be (info * arg) so we can access struct V being passed
 
-    int v;
-    v++;
-   
-    printf("v is %d\n", v);
+    // THIS INITIALIZES arg as V but causes errors due because of above ^^^
+    //struct info *V = arg; 
 
-    pthread_exit(0);
+    printf("\nIt worked!");
 
+    //int v;
+    //v++;
+    //printf("v is %d\n", v);
+    return NULL;
 }
 
 int main(){
     /* n is the amount of numbers that will be sorted
     u is the upper limit for determining the numbers
     p is the number of segments that the numbers will be divided into */
+    //when inputting put a space inbetween numbers EX: 5 25 5
     int n, u, p;
     cin >> n >> u >> p;
     cout << "inputs were:" << endl;
@@ -54,6 +57,11 @@ int main(){
         cout << v << " ";
     }    
 
+    pthread_t tid;
+
+    for(int i = 0; i<p; i++){
+        pthread_create(&tid, NULL, sort_func, (void *)&V);//passing V which is the struct
+    }
     //somehow determine boundaries for each segment to pass based on n/p and replace NULL with each corresponding front and rear
 //    int elements_each = n/p;//number of elements in each segment change to floor
  //   int iterator1 = 0;
