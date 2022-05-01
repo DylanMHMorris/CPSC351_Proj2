@@ -63,6 +63,9 @@ int main(){
     for(int i = 0; i<p; i++){
         pthread_create(&tid, NULL, sort_func, (void *)&V);//passing V which is the struct
     }
+    
+    return 0;
+}
     //somehow determine boundaries for each segment to pass based on n/p and replace NULL with each corresponding front and rear
 //    int elements_each = n/p;//number of elements in each segment change to floor
  //   int iterator1 = 0;
@@ -79,9 +82,6 @@ int main(){
  //   }
     //while loop with join
     //while loop to merge
-
-    return 0;
-}
 
 /* qsort() example
 #include <stdio.h>
