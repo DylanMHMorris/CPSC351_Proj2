@@ -33,7 +33,11 @@ int main(){
     /* n is the amount of numbers that will be sorted
     u is the upper limit for determining the numbers
     p is the number of segments that the numbers will be divided into */
-    //when inputting put a space inbetween numbers EX: 5 25 5
+    //
+    //command used to compile -> g++ -pthread -o multi_threaded_merge_sort_test  multi_threaded_merge_sort.cpp
+    //
+    //when inputting put a space inbetween numbers all in one line EX: 5 25 5
+    //
     int n, u, p;
     cout << "Please input 3 numbers: ";
     cin >> n >> u >> p;
